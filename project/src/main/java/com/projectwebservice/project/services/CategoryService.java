@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.projectwebservice.project.entities.Category;
 import com.projectwebservice.project.repositories.CategoryRepository;
 
-
 @Service
 public class CategoryService {
 
@@ -24,7 +23,4 @@ public class CategoryService {
         Optional<Category> obj = repository.findById(id);
         return obj.get();
     }
-
-
-
 }

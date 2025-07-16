@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.projectwebservice.project.entities.User;
 import com.projectwebservice.project.repositories.UserRepository;
 
-
 @Service
 public class UserService {
 
@@ -24,7 +23,4 @@ public class UserService {
         Optional<User> obj = repository.findById(id);
         return obj.get();
     }
-
-
-
 }

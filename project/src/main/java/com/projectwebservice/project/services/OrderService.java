@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.projectwebservice.project.entities.Order;
 import com.projectwebservice.project.repositories.OrderRepository;
 
-
 @Service
 public class OrderService {
 
@@ -24,7 +23,4 @@ public class OrderService {
         Optional<Order> obj = repository.findById(id);
         return obj.get();
     }
-
-
-
 }
