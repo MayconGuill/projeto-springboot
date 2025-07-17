@@ -48,10 +48,6 @@ public class OrderItem implements Serializable{
         this.setProduct(product);
     }
 
-    public static long getSerialversionuid() {
-        return serialVersionUID;
-    }
-    
     public Integer getQuantity() {
         return quantity;
     }
