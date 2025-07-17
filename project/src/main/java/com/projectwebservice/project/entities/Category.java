@@ -25,7 +25,7 @@ public class Category implements Serializable{
 
     @JsonIgnore
     @ManyToMany(mappedBy = "categories")
-    private Set<Product> products = new HashSet<>();
+    private Set<Product> products = new HashSet<>(); // Set evita duplicações (um mesmo produto aparecer mais de uma vez na mesma categoria). Também é uma prática comum em relacionamentos @ManyToMany.
 
     public Category() {
     }

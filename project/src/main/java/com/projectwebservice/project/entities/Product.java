@@ -29,13 +29,13 @@ public class Product implements Serializable{
     private Double price;
     private String imgUrl;
 
-    @ManyToMany
-    @JoinTable(name = "tb_product_category", 
-    joinColumns = @JoinColumn(name = "product_id"),
-    inverseJoinColumns = @JoinColumn(name = "category_id"))
+    @ManyToMany // ManyToMany é uma anotação muitos-para-muitos entre produtos e categorias
+    @JoinTable(name = "tb_product_category", // JoinTable define a tabela intermediária tb_product_category
+    joinColumns = @JoinColumn(name = "product_id"), // define qual é a foreign key da entidade atual (Product), ou seja, product_id
+    inverseJoinColumns = @JoinColumn(name = "category_id")) // define a foreign key da outra entidade (Category), ou seja, category_id
     private Set<Category> categories = new HashSet<>();
 
-    @OneToMany(mappedBy = "id.product")
+    @OneToMany(mappedBy = "id.product") // mappedBy = "id.product": indica que o mapeamento está no atributo id da classe OrderItem, e que ele tem um campo product.
     private Set<OrderItem> items = new HashSet<>();
 
     public Product() {
@@ -95,7 +95,7 @@ public class Product implements Serializable{
     }
 
     @JsonIgnore
-    public Set<Order> getOrders() {
+    public Set<Order> getOrders() { // Método utilitário para obter todos os pedidos (Order) que contêm este produto.
         Set<Order> set = new HashSet<>();
         for (OrderItem x : items) {
             set.add(x.getOrder());

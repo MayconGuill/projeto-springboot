@@ -9,7 +9,7 @@ import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
-@Embeddable
+@Embeddable // Diz ao JPA que esta classe pode ser incorporada (embed) em outra entidade — nesse caso, dentro de OrderItem.
 public class OrderItemPK implements Serializable{
     private static final long serialVersionUID = 1L;
 

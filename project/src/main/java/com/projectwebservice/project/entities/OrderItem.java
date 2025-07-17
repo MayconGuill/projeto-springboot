@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 public class OrderItem implements Serializable{
     private static final long serialVersionUID = 1L;
 
-    @EmbeddedId
+    @EmbeddedId // Essa anotação indica que a chave primária da entidade é composta. A classe OrderItemPK é uma classe auxiliar (do pacote pk) que representa a chave composta entre Order e Product.
     private OrderItemPK id = new OrderItemPK();
 
     private Integer quantity;
@@ -37,7 +37,7 @@ public class OrderItem implements Serializable{
     }
 
     public void setOrder(Order order) {
-        this.setOrder(order);
+        this.id.setOrder(order);
     }
 
     public Product getProduct() {
@@ -45,7 +45,7 @@ public class OrderItem implements Serializable{
     }
 
     public void setProduct(Product product) {
-        this.setProduct(product);
+        this.id.setProduct(product);
     }
 
     public Integer getQuantity() {

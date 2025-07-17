@@ -24,8 +24,8 @@ public class Payment implements Serializable{
     private Instant moment;
 
     @JsonIgnore
-    @OneToOne
-    @MapsId
+    @OneToOne // OneToOne indica a relação um-para-um entre pedido e pagamanto.
+    @MapsId // Essa anotação diz que o Payment usa o mesmo ID do Order. Ou seja, o id da entidade Payment é o mesmo valor do pedido ao qual ele pertence.
     private Order order;
 
     public Payment() {

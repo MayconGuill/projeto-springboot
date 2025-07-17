@@ -13,23 +13,24 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "tb_user")
-public class User implements Serializable{
+@Entity // Entity idica que esta classe é uma entidade JPA (tabela no BD)
+@Table(name = "tb_user") // Table define o nome da tablea no banco como "tb_user"
+public class User implements Serializable{ // Serializable permite que objetos dessa classe sejam convertidos em bytes (importante para trafegar dados), necessário emem frameworks como JPA / Hibernate.
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id // Id marca a chave primária para o banco de dados
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // GeneratedValue com IDENTITY indica que será gerado automaticamente pelo banco
     private Long id;
     private String name;
     private String email;
     private String phone;
     private String password;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "client")
+    @JsonIgnore // JsonIgnore é uma anotação da biblioteca Jackson usada para ignorar atributos na serialização JSON - evita loops infinitos em relacionamentos bidirecionais.
+    @OneToMany(mappedBy = "client") // OneToMany é uma anotação de relacionamento um-para-muitos entre User e Order, o mappedBy = "client", indica que o atributo client na entidade order é o dono do relacionamento.
     private List<Order> orders = new ArrayList<>();
 
+    // Construtor padrão exigido pelo JPA
     public User() {
     }
 
