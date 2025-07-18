@@ -35,6 +35,8 @@ Você pode testar a API utilizando ferramentas como:
 - [Postman](https://www.postman.com/)
 - [Insomnia](https://insomnia.rest/)
 
+# Como executar o projeto
+
 ```bash
 # clonar repositório
 git clone https://github.com/MayconGuill/projeto-springboot.git
@@ -53,4 +55,5 @@ http://localhost:8080/h2-console
 # Autor
 
 Maycon Vieira Guill Rodrigues
+
 https://www.linkedin.com/in/maycon-vieira-350b19304/
