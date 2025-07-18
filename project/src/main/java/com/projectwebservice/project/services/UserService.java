@@ -35,13 +35,13 @@ public class UserService {
     }
 
     public void delete(Long id) { 
+        if(!repository.existsById(id)) { // Se o ID não existir, lança ResourceNotFoundException.
+            throw new ResourceNotFoundException(id);
+        }
         try {
             repository.deleteById(id); // Tenta deletar um usuário pelo id.
-        } catch (EmptyResultDataAccessException e) { // Se o ID não existir, lança ResourceNotFoundException.
+        }  catch (DataIntegrityViolationException e) { // Se houver violação de integridade (por exemplo, o usuário tem pedidos vinculados), lança DatabaseException.
             e.printStackTrace(); // imprime no console a sequência de chamadas de métodos (stack trace) que levou à exceção.
-            throw new ResourceNotFoundException(id);
-        } catch (DataIntegrityViolationException e) { // Se houver violação de integridade (por exemplo, o usuário tem pedidos vinculados), lança DatabaseException.
-            e.printStackTrace();
             throw new DatabaseException(e.getMessage());
         }
     }
